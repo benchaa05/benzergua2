@@ -20,17 +20,33 @@ namespace benzergua
     /// </summary>
     public partial class MainWindow : Window
     {
+        private PatientManager _patientManager = new PatientManager();
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
 // Hi, I am testing this online?
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void CreateCodeBtn_Click(object sender, RoutedEventArgs e)
         {
             gmdbEntities gmdb = new gmdbEntities();
             var query = from t in gmdb.patients
                 select t;
-            PatientGridControl.ItemsSource = query.ToList();
+
+            foreach (var getPatient in query)
+            {
+                _patientManager.CreatePatientUniqueCode(getPatient);
+            }
+            MessageBox.Show("finished");
+
+            var query2 = from t in gmdb.patients
+                select t;
+            PatientGridControl.ItemsSource = query2.ToList();
         }
     }
 }

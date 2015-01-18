@@ -24,7 +24,7 @@ namespace benzergua
         {
             InitializeComponent();
         }
-
+// Hi, I am testing this online?
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
             gmdbEntities gmdb = new gmdbEntities();

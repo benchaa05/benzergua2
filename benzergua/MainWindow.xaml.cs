@@ -27,6 +27,10 @@ namespace benzergua
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
+            gmdbEntities gmdb = new gmdbEntities();
+            var query = from t in gmdb.patients
+                select t;
+            PatientGridControl.ItemsSource = query.ToList();
         }
     }
 }

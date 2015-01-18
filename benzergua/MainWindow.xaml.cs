@@ -24,5 +24,9 @@ namespace benzergua
         {
             InitializeComponent();
         }
+
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }

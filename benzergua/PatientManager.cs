@@ -47,5 +47,24 @@ namespace benzergua
             _gmDb.SaveChanges();
             return query.First();
         }
+
+        public void AddPatientIDtoConsultation(patient getPatient)
+        {
+            try
+            {
+                var query = from p in _gmDb.consultations
+                    where p.COD == getPatient.OldCode
+                    select p;
+                if (!query.Any()) return;
+                foreach (var getCOnsultation in query)
+                {
+                    getCOnsultation.PatientID = getPatient.PatientID;
+                }
+                _gmDb.SaveChanges();
+            }
+            catch (Exception)
+            {
+            }
+        }
     }
 }

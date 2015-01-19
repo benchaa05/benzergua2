@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -35,21 +36,32 @@ namespace benzergua
 
         private void CreateCodeBtn_Click(object sender, RoutedEventArgs e)
         {
+            var getAllPatients = new BackgroundWorker();
+            getAllPatients.DoWork += GetAllConsultationOnDoWork;
+            getAllPatients.RunWorkerCompleted += GetAllConsultationOnRunWorkerCompleted;
+            getAllPatients.RunWorkerAsync();
+        }
+
+        private void GetAllConsultationOnRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show("finished");
+            gmdbEntities gmdb = new gmdbEntities();
+            var query2 = from t in gmdb.consultations
+                select t;
+            PatientGridControl.ItemsSource = query2.ToList();
+        }
+
+        private void GetAllConsultationOnDoWork(object sender, DoWorkEventArgs e)
+        {
             gmdbEntities gmdb = new gmdbEntities();
             var query = from t in gmdb.patients
-                where t.PatientID > 1024 && t.PatientID <= 4196
+                where t.PatientID > 16000 && t.PatientID <= 24000
                 select t;
 
             foreach (var getPatient in query)
             {
                 _patientManager.AddPatientIDtoConsultation(getPatient);
             }
-
-            MessageBox.Show("finished");
-
-            var query2 = from t in gmdb.patients
-                select t;
-            PatientGridControl.ItemsSource = query2.ToList();
         }
     }
 }

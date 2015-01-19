@@ -55,7 +55,8 @@ namespace benzergua
         {
             gmdbEntities gmdb = new gmdbEntities();
             var query = from t in gmdb.patients
-                where t.PatientID > 16000 && t.PatientID <= 24000
+                where t.PatientID > 30956
+                // && t.PatientID <= 24000
                 select t;
 
             foreach (var getPatient in query)

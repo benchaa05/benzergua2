@@ -54,15 +54,16 @@ namespace benzergua
         private void GetAllConsultationOnDoWork(object sender, DoWorkEventArgs e)
         {
             gmdbEntities gmdb = new gmdbEntities();
-            var query = from t in gmdb.patients
-                where t.PatientID > 30956
-                // && t.PatientID <= 24000
+            var query = from t in gmdb.consultations
                 select t;
 
-            foreach (var getPatient in query)
+            foreach (var getCnsultation in query)
             {
-                _patientManager.AddPatientIDtoConsultation(getPatient);
+                getCnsultation.ConsultationName = "CN 400;";
+                getCnsultation.ConsultationFee = 400;
+                getCnsultation.ConsultationRemainFee = 0;
             }
+            gmdb.SaveChanges();
         }
     }
 }

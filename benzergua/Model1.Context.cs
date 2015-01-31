@@ -26,6 +26,6 @@ namespace benzergua
         }
     
         public DbSet<consultation> consultations { get; set; }
-        public DbSet<patient> patients { get; set; }
+        public DbSet<reglementpatient> reglementpatients { get; set; }
     }
 }

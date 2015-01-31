@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="gmbenzerguaModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="gmdbModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="consultation">
           <Key>
             <PropertyRef Name="ConsultationID" />
@@ -36,57 +36,25 @@
           <Property Name="IMCnote" Type="varchar" MaxLength="50" />
           <Property Name="PC" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="patient">
+        <EntityType Name="reglementpatient">
           <Key>
-            <PropertyRef Name="PatientID" />
+            <PropertyRef Name="ReglementID" />
           </Key>
-          <Property Name="PatientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PatientCountry" Type="varchar" MaxLength="50" />
-          <Property Name="PatientWilaya" Type="int" />
-          <Property Name="PatientDaira" Type="int" />
-          <Property Name="PatientCommune" Type="int" />
-          <Property Name="PatientVillage" Type="text" />
-          <Property Name="OldCode" Type="int" />
-          <Property Name="PatientFirstName" Type="varchar" MaxLength="20" />
-          <Property Name="PatientLastName" Type="varchar" MaxLength="20" />
-          <Property Name="PatientSexe" Type="varchar" MaxLength="20" />
-          <Property Name="PatientBirthDay" Type="datetime" Precision="0" />
-          <Property Name="PatientAge" Type="int" />
-          <Property Name="PatientPhone" Type="varchar" MaxLength="20" />
-          <Property Name="PatientFix" Type="varchar" MaxLength="20" />
-          <Property Name="PatientMobile1" Type="varchar" MaxLength="20" />
-          <Property Name="PatientMobile2" Type="varchar" MaxLength="20" />
-          <Property Name="PatientEmail" Type="varchar" MaxLength="50" />
-          <Property Name="PatSituationFami" Type="varchar" MaxLength="20" />
-          <Property Name="PatKidNumber" Type="int" />
-          <Property Name="PatSecurityState" Type="varchar" MaxLength="20" />
-          <Property Name="PatGrossesState" Type="varchar" MaxLength="20" />
-          <Property Name="PatGrossesMonth" Type="int" />
-          <Property Name="PatSignePhysic" Type="text" />
-          <Property Name="PatTabagismeState" Type="varchar" MaxLength="20" />
-          <Property Name="PatProfession" Type="varchar" MaxLength="20" />
-          <Property Name="PatSocialState" Type="varchar" MaxLength="20" />
-          <Property Name="PatUniqueCode" Type="varchar" MaxLength="20" />
-          <Property Name="PatEtat" Type="varchar" MaxLength="20" />
-          <Property Name="PatChroniqueDeceise" Type="varchar" MaxLength="20" />
-          <Property Name="PatWeight" Type="varchar" MaxLength="20" />
-          <Property Name="PatTall" Type="varchar" MaxLength="20" />
-          <Property Name="PieceIdentity" Type="varchar" MaxLength="100" />
-          <Property Name="DelivrancePC" Type="date" />
-          <Property Name="PatBloodGroupe" Type="varchar" MaxLength="20" />
-          <Property Name="PatientTransfusion" Type="varchar" MaxLength="300" />
-          <Property Name="PatMonths" Type="int" />
-          <Property Name="PatDays" Type="int" />
+          <Property Name="ReglementID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SurgeyID" Type="int" />
+          <Property Name="ReglementName" Type="varchar" MaxLength="50" />
+          <Property Name="ReglementPrice" Type="int" />
+          <Property Name="ReglementDate" Type="datetime" Precision="0" />
         </EntityType>
-        <EntityContainer Name="gmbenzerguaModelStoreContainer">
-          <EntitySet Name="consultation" EntityType="Self.consultation" Schema="gmbenzergua" store:Type="Tables" />
-          <EntitySet Name="patient" EntityType="Self.patient" Schema="gmbenzergua" store:Type="Tables" />
+        <EntityContainer Name="gmdbModelStoreContainer">
+          <EntitySet Name="consultation" EntityType="Self.consultation" Schema="gmdb" store:Type="Tables" />
+          <EntitySet Name="reglementpatient" EntityType="Self.reglementpatient" Schema="gmdb" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="gmbenzerguaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="gmdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="consultation">
           <Key>
             <PropertyRef Name="ConsultationID" />
@@ -118,60 +86,28 @@
           <Property Name="IMCnote" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="patient">
+        <EntityType Name="reglementpatient">
           <Key>
-            <PropertyRef Name="PatientID" />
+            <PropertyRef Name="ReglementID" />
           </Key>
-          <Property Name="PatientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PatientCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PatientWilaya" Type="Int32" />
-          <Property Name="PatientDaira" Type="Int32" />
-          <Property Name="PatientCommune" Type="Int32" />
-          <Property Name="PatientVillage" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="OldCode" Type="Int32" />
-          <Property Name="PatientFirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PatientLastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PatientSexe" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PatientBirthDay" Type="DateTime" />
-          <Property Name="PatientAge" Type="Int32" />
-          <Property Name="PatientPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PatientFix" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PatientMobile1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PatientMobile2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PatientEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PatSituationFami" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PatKidNumber" Type="Int32" />
-          <Property Name="PatSecurityState" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PatGrossesState" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PatGrossesMonth" Type="Int32" />
-          <Property Name="PatSignePhysic" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="PatTabagismeState" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PatProfession" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PatSocialState" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PatUniqueCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PatEtat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PatChroniqueDeceise" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PatWeight" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PatTall" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PieceIdentity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DelivrancePC" Type="DateTime" />
-          <Property Name="PatBloodGroupe" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PatientTransfusion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="PatMonths" Type="Int32" />
-          <Property Name="PatDays" Type="Int32" />
+          <Property Name="ReglementID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SurgeyID" Type="Int32" />
+          <Property Name="ReglementName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReglementPrice" Type="Int32" />
+          <Property Name="ReglementDate" Type="DateTime" />
         </EntityType>
         <EntityContainer Name="gmdbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="consultations" EntityType="Self.consultation" />
-          <EntitySet Name="patients" EntityType="Self.patient" />
+          <EntitySet Name="reglementpatients" EntityType="Self.reglementpatient" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="gmbenzerguaModelStoreContainer" CdmEntityContainer="gmdbEntities">
+        <EntityContainerMapping StorageEntityContainer="gmdbModelStoreContainer" CdmEntityContainer="gmdbEntities">
           <EntitySetMapping Name="consultations">
-            <EntityTypeMapping TypeName="gmbenzerguaModel.consultation">
+            <EntityTypeMapping TypeName="gmdbModel.consultation">
               <MappingFragment StoreEntitySet="consultation">
                 <ScalarProperty Name="ConsultationID" ColumnName="ConsultationID" />
                 <ScalarProperty Name="PatientID" ColumnName="PatientID" />
@@ -202,46 +138,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="patients">
-            <EntityTypeMapping TypeName="gmbenzerguaModel.patient">
-              <MappingFragment StoreEntitySet="patient">
-                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
-                <ScalarProperty Name="PatientCountry" ColumnName="PatientCountry" />
-                <ScalarProperty Name="PatientWilaya" ColumnName="PatientWilaya" />
-                <ScalarProperty Name="PatientDaira" ColumnName="PatientDaira" />
-                <ScalarProperty Name="PatientCommune" ColumnName="PatientCommune" />
-                <ScalarProperty Name="PatientVillage" ColumnName="PatientVillage" />
-                <ScalarProperty Name="OldCode" ColumnName="OldCode" />
-                <ScalarProperty Name="PatientFirstName" ColumnName="PatientFirstName" />
-                <ScalarProperty Name="PatientLastName" ColumnName="PatientLastName" />
-                <ScalarProperty Name="PatientSexe" ColumnName="PatientSexe" />
-                <ScalarProperty Name="PatientBirthDay" ColumnName="PatientBirthDay" />
-                <ScalarProperty Name="PatientAge" ColumnName="PatientAge" />
-                <ScalarProperty Name="PatientPhone" ColumnName="PatientPhone" />
-                <ScalarProperty Name="PatientFix" ColumnName="PatientFix" />
-                <ScalarProperty Name="PatientMobile1" ColumnName="PatientMobile1" />
-                <ScalarProperty Name="PatientMobile2" ColumnName="PatientMobile2" />
-                <ScalarProperty Name="PatientEmail" ColumnName="PatientEmail" />
-                <ScalarProperty Name="PatSituationFami" ColumnName="PatSituationFami" />
-                <ScalarProperty Name="PatKidNumber" ColumnName="PatKidNumber" />
-                <ScalarProperty Name="PatSecurityState" ColumnName="PatSecurityState" />
-                <ScalarProperty Name="PatGrossesState" ColumnName="PatGrossesState" />
-                <ScalarProperty Name="PatGrossesMonth" ColumnName="PatGrossesMonth" />
-                <ScalarProperty Name="PatSignePhysic" ColumnName="PatSignePhysic" />
-                <ScalarProperty Name="PatTabagismeState" ColumnName="PatTabagismeState" />
-                <ScalarProperty Name="PatProfession" ColumnName="PatProfession" />
-                <ScalarProperty Name="PatSocialState" ColumnName="PatSocialState" />
-                <ScalarProperty Name="PatUniqueCode" ColumnName="PatUniqueCode" />
-                <ScalarProperty Name="PatEtat" ColumnName="PatEtat" />
-                <ScalarProperty Name="PatChroniqueDeceise" ColumnName="PatChroniqueDeceise" />
-                <ScalarProperty Name="PatWeight" ColumnName="PatWeight" />
-                <ScalarProperty Name="PatTall" ColumnName="PatTall" />
-                <ScalarProperty Name="PieceIdentity" ColumnName="PieceIdentity" />
-                <ScalarProperty Name="DelivrancePC" ColumnName="DelivrancePC" />
-                <ScalarProperty Name="PatBloodGroupe" ColumnName="PatBloodGroupe" />
-                <ScalarProperty Name="PatientTransfusion" ColumnName="PatientTransfusion" />
-                <ScalarProperty Name="PatMonths" ColumnName="PatMonths" />
-                <ScalarProperty Name="PatDays" ColumnName="PatDays" />
+          <EntitySetMapping Name="reglementpatients">
+            <EntityTypeMapping TypeName="gmdbModel.reglementpatient">
+              <MappingFragment StoreEntitySet="reglementpatient">
+                <ScalarProperty Name="ReglementID" ColumnName="ReglementID" />
+                <ScalarProperty Name="SurgeyID" ColumnName="SurgeyID" />
+                <ScalarProperty Name="ReglementName" ColumnName="ReglementName" />
+                <ScalarProperty Name="ReglementPrice" ColumnName="ReglementPrice" />
+                <ScalarProperty Name="ReglementDate" ColumnName="ReglementDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
